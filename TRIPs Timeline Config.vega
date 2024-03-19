@@ -1,0 +1,34 @@
+{
+  "view": {"stroke": "transparent"},
+  "font": "Segoe UI",
+  "legend": {
+    "orient": "left",
+    "labelColor": "#FFFFFF",
+    "labelFontSize": 12
+  },
+  "bar": {
+    "color": "#d3d3d3",
+    "opacity": 0.5,
+    "width": 1.5
+  },
+  "text": {
+    "font": "Segoe UI",
+    "fontSize": 11,
+    "fill": "#FFFFFF",
+    "offset": 100
+  },
+  "axis": {
+    "nice": true,
+    "ticks": true,
+    "grid": false,
+    "labelColor": "#FFFFFF",
+    "labelFontSize": 8
+  },
+  "axisQuantitative": {
+    "tickCount": 10,
+    "grid": true,
+    "gridColor": "#FFFFFF",
+    "labelFlush": false
+  },
+  "axisX": {"labelPadding": 5}
+}

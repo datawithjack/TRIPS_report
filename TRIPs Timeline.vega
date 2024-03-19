@@ -1,0 +1,189 @@
+{
+  "data": {"name": "dataset"},
+  "description": "Minimalist Timeline with conditional formatting",
+  "author": "Andy Murphy | DaytoDataStuff",
+  "layer": [
+    {
+      "description": "Timeline Points",
+      "mark": {
+        "type": "square",
+        "filled": true,
+        "size": 75
+      },
+      "transform": [
+        {
+          "filter": "datum.Type !== 'Podcast Preview'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "scale": {
+            "domain": [
+              {
+                "year": 2022,
+                "month": "jan",
+                "date": 1
+              },
+              {
+                "year": 2024,
+                "month": "mar",
+                "date": 1
+              }
+            ]
+          },
+          "axis": {
+            "offset": 15,
+            "domain": true,
+            "title": false
+          }
+        },
+        "y": {
+          "field": "Position",
+          "type": "quantitative",
+          "axis": false
+        },
+        "color": {
+          "legend": false,
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "UK",
+              "Sport",
+              "International",
+              "TRIPs",
+              "Podcast Preview"
+            ],
+            "range": [
+              "#5B9BD5",
+              "#92D050",
+              "#ED7D31",
+              "white",
+              "white"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "description": "Timeline Outline",
+      "mark": {
+        "tooltip": true,
+        "type": "point",
+        "filled": true,
+        "size": 50
+      },
+      "transform": [
+        {
+          "filter": "datum.Type === 'Podcast Preview'"
+        },
+        {
+          "filter": "datum['Contains Dynamic Measure'] === 1"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Position",
+          "type": "quantitative",
+          "axis": false
+        },
+        "color": {
+          "legend": false,
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Podcast Preview"
+            ],
+            "range": ["red"]
+          }
+        }
+      }
+    },
+    {
+      "description": "Timeline Labels",
+      "mark": {
+        "type": "text",
+        "dy": -15
+      },
+      "transform": [
+        {
+          "filter": "datum.Type !== 'Podcast Preview'"
+        }
+      ],
+      "encoding": {
+        "text": {"field": "Label"},
+        "x": {
+          "field": "Date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Position",
+          "type": "quantitative",
+          "axis": "false"
+        }
+      }
+    },
+    {
+      "description": "LabelLines",
+      "mark": {
+        "type": "bar",
+        "dy": -1
+      },
+      "transform": [
+        {
+          "filter": "datum['Contains Dynamic Measure'] === 1"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Position",
+          "type": "quantitative",
+          "axis": "false"
+        },
+        "color": {
+          "legend": false,
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "UK",
+              "Sport",
+              "International",
+              "TRIPs",
+              "Podcast Preview"
+            ],
+            "range": [
+              "#5B9BD",
+              "#92D050",
+              "#ED7D31",
+              "white",
+              "white"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "y": {
+          "field": "Position",
+          "type": "quantitative",
+          "datum": 0
+        },
+        "color": {"value": "#d3d3d3"}
+      }
+    }
+  ]
+}
